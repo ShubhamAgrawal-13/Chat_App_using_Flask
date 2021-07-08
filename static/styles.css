@@ -21,7 +21,7 @@ body, html {
 
 .right_top_panel {
   width: 65%;
-  height: 68%;
+  height: 60%;
   position: relative;
   float: right;
   border-width: 1px;
@@ -32,7 +32,7 @@ body, html {
 
 .right_bottom_panel {
   width: 65%;
-  height: 12%;
+  height: 20%;
   position: relative;
   float: right;
   /*background-color: royalblue;*/

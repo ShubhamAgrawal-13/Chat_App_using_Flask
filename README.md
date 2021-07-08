@@ -1,4 +1,4 @@
-## Objective
+# Objective
 -------------
 To make a chat app using flask:
 1. Register user
@@ -8,16 +8,51 @@ To make a chat app using flask:
 5. Should support group chat
 6. chat should be persistent
 ------------------------------------------------------------------------------
-# First we will try to create a flask app.
+# Overall Flow:
+![Flow](images/Flow.png)
+------------------------------------------------------------------------------
+# Dashboard:
+![Dashboard](images/Dashboard.png)
+------------------------------------------------------------------------------
+## Files:
 
-# Html Pages:
-home
-login
-register
-dashboard
+### Html Pages(templates directory):
+1. home.html
+2. login.html
+3. register.html
+4. dashboard.html
+5. invalid.html
+
+### Python Files:
+1. home.py
+2. action_server.py
+
+
+### static files(static directory):
+1. styles.css
+
+### Info files:
+1. msg_id.txt
+2. users.txt
+3. groups.txt
+4. group_mapping.txt 
 
 -------------------------------------------------------------------------------
 # How we will store the user information?
+## User Record
+```
+{ User Info Table}
+
+{
+    {
+        "user_id": message['uid'],
+        "email": message['email'], 
+        "password": message['password']
+    }
+}
+```
+
+## Users Data
 
 ```
 {
@@ -74,73 +109,54 @@ dashboard
 
 
 ----------------------------------------------------------------------------
-# register form and login form css
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 30%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-input[type=text], input[type=password], input[type=email]  {   
-  width: 100%;   
-  margin: 8px 0;  
-  padding: 12px 20px;   
-  display: inline-block;   
-  border: 2px solid green;   
-  box-sizing: border-box;   
-} 
-
--------------------------------------------------------------------------------
-
-Database Connection:
+#Database Connection:
 --------------------
-
+```
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 user_db = myclient["authentication"]
 user_table = user_db["user_info"]
+```
 
-if(request.method == 'POST'):
-    req = request.form
-    req = dict(req)
+## Insert a record
+`user_table.insert_one(reg_dict)`
 
-#insert a record
-user_table.insert_one(reg_dict)
+## Query a record
+`query = user_table.find({'uid':req['uid']})`
 
-#query a record
-query = user_table.find({'uid':req['uid']})
+```
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+mydb = myclient["GlobalDB"]
+```
 
--------------------------------------------------------------------------------
+## Update a record
+```
+mycol = mydb[collection_name]
+myquery = { "msg_id": msg_id }
+mydoc = mycol.find(myquery)
+newvalues = { "$set": { "text": text } }
+mycol.update_one(myquery, newvalues)
+```
 
-#User Record
-"""
-{ User Info Table}
-
-{
-    {
-        "user_id": message['uid'],
-        "email": message['email'], 
-        "password": message['password']
-    }
-}
-
-"""
+## Delete a record
+```
+mycol = mydb[collection_name]
+myquery = { "msg_id": msg_id }
+mydoc = mycol.find(myquery)
+for x in mydoc:
+    mycol.delete_one(x)
+```
 
 ------------------------------------------------------------------------------
-# Producer:
+# Kafka 
+## Producer Object in python:
 
+```
 producer = KafkaProducer(bootstrap_servers = 'localhost:9092')
 producer.send(topic, json.dumps(dict_msg).encode('utf-8'))
+```
 
-
-# Consumer
+## Consumer Object in python:
+```
 consumer = KafkaConsumer(user_id,
          bootstrap_servers=['localhost:9092'],
          auto_offset_reset='latest',
@@ -149,25 +165,19 @@ consumer = KafkaConsumer(user_id,
     
 for msg in consumer:
     print(msg.value)
+```
+-------------------------------------------------------------------------------
+# JavaScript:
 
---------------------------------------------------------------------------------
-
+```
 <script>
     chatWindow = document.getElementById('chat_window'); 
     var xH = chatWindow.scrollHeight; 
     chatWindow.scrollTo(0, xH);
 </script>
 
---------------------------------------------------------------------------------
+onClick="window.location.reload();
 
-onClick="window.location.reload();"
-
---------------------------------------------------------------------------------
-
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient["GlobalDB"]
-
---------------------------------------------------------------------------------
 <script>
     function openDiv() {
       document.getElementById("div").style.display = "block";
@@ -177,20 +187,6 @@ mydb = myclient["GlobalDB"]
       document.getElementById("div").style.display = "none";
     }
 </script>
---------------------------------------------------------------------------------
-Update Msg:
------------
-mycol = mydb[collection_name]
-myquery = { "msg_id": msg_id }
-mydoc = mycol.find(myquery)
-newvalues = { "$set": { "text": text } }
-mycol.update_one(myquery, newvalues)
----------------------------------------------------------------------------------
-Delete Msg:
------------
-mycol = mydb[collection_name]
-myquery = { "msg_id": msg_id }
-mydoc = mycol.find(myquery)
-for x in mydoc:
-    mycol.delete_one(x)
----------------------------------------------------------------------------------
+
+```
+------------------------------------------------------------------------------
