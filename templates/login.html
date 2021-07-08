@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login Page</title>
+	<style type="text/css">
+		button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input[type=text], input[type=password], input[type=email]  {   
+  width: 100%;   
+  margin: 8px 0;  
+  padding: 12px 20px;   
+  display: inline-block;   
+  border: 2px solid green;   
+  box-sizing: border-box;   
+} 
+
+	</style>
+</head>
+<body>
+	<h1> Login Form: </h1>
+	<form action="login_check" method="POST">
+		<table>
+			<tr>
+				<td>
+					<label> Username :</label>
+				</td>
+				<td>
+					<input type="text" name="uid" placeholder="Enter a Username"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label> Password :</label>
+				</td>
+				<td>
+					<input type="password" name="password" placeholder="Enter a Password"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit"> Login </button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<a href=""> Forgot Password?  </a> <br>
+	Create a new account? <a href="register"> Register </a>
+	<br>
+	<a href="home"> Home </a>
+</body>
+</html>
