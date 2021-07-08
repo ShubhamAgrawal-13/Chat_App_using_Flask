@@ -10,9 +10,8 @@ db.dropDatabase()
 db.collection.find()
 db.collection.insertOne()
 db.collection.drop()
-
 ------------------------------------------------------------------------------
-#Kafka Commands:
+# Kafka Commands:
 ----------------
 
 #To start Zookeeper

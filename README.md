@@ -18,22 +18,22 @@ To make a chat app using flask:
 ------------------------------------------------------------------------------
 # How to run the code?
 
-1. Start Zookeeper : First go to the directory where the kafka is present, then the run the following command:
+1. **Start Zookeeper :** First go to the directory where the kafka is present, then the run the following command:
 ```
 .\bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 ```
 
-2. Start Kafka Server: Run the following command:
+2. **Start Kafka Server:** Run the following command:
 ```
 .\bin\windows\kafka-server-start.bat config\server.properties
 ```
 
-3. Start Flask Server: First go to the Chat App directory, then the run the following command:
+3. **Start Flask Server:** First go to the Chat App directory, then the run the following command:
 ```
 python home.py
 ```
 
-4. Start Action Server: Run the following command:
+4. **Start Action Server:** Run the following command:
 ```
 python action_server.py
 ```
