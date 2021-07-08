@@ -16,24 +16,24 @@ db.collection.drop()
 ----------------
 
 #To start Zookeeper
-.\bin\windows\zookeeper-server-start config\zookeeper.properties
+.\bin\windows\zookeeper-server-start.bat config\zookeeper.properties
 
 #To start kafka server
-.\bin\windows\kafka-server-start config\server.properties
+.\bin\windows\kafka-server-start.bat config\server.properties
 
 #To create a topic
-.\bin\windows\kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
+.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
 
 
 #To list the topics
-.\bin\windows\kafka-topics.sh --list --bootstrap-server localhost:9092
+.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
 
 
 #For Console Producer
-.\bin\windows\kafka-console-producer.sh --broker-list localhost:9092 --topic test
+.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic test
 
 #For Console Consumer
-.\bin\windows\kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning
 
 
 ------------------------------------------------------------------------------

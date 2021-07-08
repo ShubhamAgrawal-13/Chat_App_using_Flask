@@ -1,5 +1,7 @@
-# Objective
--------------
+# Chat App using Flask
+------------------------------------------------------------------------------
+# Objective:
+------------------------------------------------------------------------------
 To make a chat app using flask:
 1. Register user
 2. Login user 
@@ -13,6 +15,21 @@ To make a chat app using flask:
 ------------------------------------------------------------------------------
 # Dashboard:
 ![Dashboard](images/Dashboard.png)
+------------------------------------------------------------------------------
+# How to run the code?
+
+1. Start Zookeeper : First go to the directory where the kafka is present, then the run the following command:
+`.\bin\windows\zookeeper-server-start.bat config\zookeeper.properties`
+
+2. Start Kafka Server: Run the following command:
+`.\bin\windows\kafka-server-start.bat config\server.properties`
+
+3. Start Flask Server: First go to the Chat App directory, then the run the following command:
+`python home.py`
+
+4. Start Action Server: Run the following command:
+`python action_server.py`
+
 ------------------------------------------------------------------------------
 ## Files:
 
@@ -109,8 +126,8 @@ To make a chat app using flask:
 
 
 ----------------------------------------------------------------------------
-#Database Connection:
---------------------
+# Database Connection (MongoDB)
+
 ```
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 user_db = myclient["authentication"]
