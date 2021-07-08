@@ -8,7 +8,7 @@ To make a chat app using flask:
 3. Send Message
 4. Deleting/ Updating messages
 5. Should support group chat
-6. chat should be persistent
+6. Chats should be persistent
 ------------------------------------------------------------------------------
 # Overall Flow:
 ![Flow](images/Flow.png)
