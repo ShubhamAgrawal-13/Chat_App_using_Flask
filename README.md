@@ -1,7 +1,7 @@
 # Chat App using Flask
 ------------------------------------------------------------------------------
 # Objective:
-To make a chat app using flask with the following functionalities:
+To make a web based Chat App using Flask with the following functionalities:
 1. Register user
 2. Login user 
 3. Send Message
@@ -57,17 +57,17 @@ python action_server.py
 2. action_server.py
 
 
-### static files(static directory):
+### Static Files(static directory):
 1. styles.css
 
-### Info files:
+### Info Files:
 1. msg_id.txt
 2. users.txt
 3. groups.txt
 4. group_mapping.txt 
 
 -------------------------------------------------------------------------------
-# How we will store the user information?
+# Structure for Storing the user information:
 ## User Record
 ```python
 # User Info Table
@@ -81,6 +81,7 @@ python action_server.py
 ## Users Data
 
 ```python
+# Users data details
 {
     "user1" : {
 
@@ -90,13 +91,13 @@ python action_server.py
             "msg_list" : {
                             "user2":{
                                  "1":{
-                                    "sender_uid": "user2",
+                                    "send_uid": "user2",
                                     "text": "Hi",
                                     "timestamp": "11:20 am"
 
                                 },
                                   "2":{
-                                    "sender_uid": "user3",
+                                    "send_uid": "user3",
                                     "text": "Hi, user1",
                                     "timestamp": "11:24 am"
 
@@ -114,13 +115,13 @@ python action_server.py
             "msg_list" : {
                               "user1":{
                                  "3":{
-                                    "sender_uid": "user2",
+                                    "send_uid": "user2",
                                     "text": "Hi",
                                     "timestamp": "11:20 am"
 
                                     },
                                 "2":{
-                                    "sender_uid": "user3",
+                                    "send_uid": "user3",
                                     "text": "Hi, user1",
                                     "timestamp": "11:24 am"
 
@@ -133,6 +134,35 @@ python action_server.py
 }
 ```
 
+## Chat Info:
+1. If it is an one to one chat, then
+#### collection name : uid1_and_uid2 
+
+2. If it is a group chat, then
+#### collection name : uid2
+
+```
+{
+     { 
+        "msg_id" : 101,
+        "send_uid" : "user2", 
+        "timestamp" : "2021-07-08 19:04:30.307704", 
+        "text" : "hi user1" 
+     },
+     { 
+        "msg_id" : 102,
+        "send_uid" : "user1", 
+        "timestamp" : "2021-07-08 19:04:30.307704", 
+        "text" : "hi" 
+     },
+     { 
+        "msg_id" : 103,
+        "send_uid" : "user2", 
+        "timestamp" : "2021-07-08 19:04:30.307704", 
+        "text" : "hello" 
+     } 
+}
+```
 
 ----------------------------------------------------------------------------
 # Database Connection (MongoDB)
