@@ -70,14 +70,11 @@ python action_server.py
 # How we will store the user information?
 ## User Record
 ```json
-# User Info Table
-
+// User Info Table
 {
-    {
-        "user_id": message['uid'],
-        "email": message['email'], 
-        "password": message['password']
-    }
+    "user_id": message['uid'],
+    "email": message['email'], 
+    "password": message['password']
 }
 ```
 
