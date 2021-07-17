@@ -93,13 +93,13 @@ python action_server.py
                                  "1":{
                                     "send_uid": "user2",
                                     "text": "Hi",
-                                    "timestamp": "11:20 am"
+                                    "timestamp": "2021-07-08 19:04:30.307704"
 
                                 },
                                   "2":{
                                     "send_uid": "user3",
                                     "text": "Hi, user1",
-                                    "timestamp": "11:24 am"
+                                    "timestamp": "2021-07-08 19:04:30.307704"
 
                                 }
                             }
@@ -117,13 +117,13 @@ python action_server.py
                                  "3":{
                                     "send_uid": "user2",
                                     "text": "Hi",
-                                    "timestamp": "11:20 am"
+                                    "timestamp": "2021-07-08 19:04:30.307704"
 
                                     },
                                 "2":{
                                     "send_uid": "user3",
                                     "text": "Hi, user1",
-                                    "timestamp": "11:24 am"
+                                    "timestamp": "2021-07-08 19:04:30.307704"
 
                                     }
                                   }
