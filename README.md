@@ -1,7 +1,6 @@
 # Chat App using Flask
 ------------------------------------------------------------------------------
 # Objective:
-------------------------------------------------------------------------------
 To make a chat app using flask with the following functionalities:
 1. Register user
 2. Login user 
@@ -11,7 +10,6 @@ To make a chat app using flask with the following functionalities:
 6. Chats should be persistent
 ------------------------------------------------------------------------------
 # Technologies used:
-------------------------------------------------------------------------------
 1. Python
 2. Flask
 3. Kafka
@@ -44,7 +42,6 @@ python home.py
 ```
 python action_server.py
 ```
-
 ------------------------------------------------------------------------------
 ## Files:
 
@@ -72,8 +69,8 @@ python action_server.py
 -------------------------------------------------------------------------------
 # How we will store the user information?
 ## User Record
-```python
-{ User Info Table}
+```json
+# User Info Table
 
 {
     {
@@ -86,7 +83,7 @@ python action_server.py
 
 ## Users Data
 
-```python
+```json
 {
     "user1" : {
 
