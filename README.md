@@ -135,11 +135,9 @@ python action_server.py
 ```
 
 ## Chat Info:
-1. If it is an one to one chat, then
-#### collection name : uid1_and_uid2 
+1. If it is an one-to-one chat, then collection name will be  **uid1_and_uid2**.
 
-2. If it is a group chat, then
-#### collection name : uid2
+2. If it is a group chat, then collection name will be **uid2**.
 
 ```
 {
