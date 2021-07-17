@@ -2,13 +2,20 @@
 ------------------------------------------------------------------------------
 # Objective:
 ------------------------------------------------------------------------------
-To make a chat app using flask:
+To make a chat app using flask with the following functionalities:
 1. Register user
 2. Login user 
 3. Send Message
-4. Deleting/ Updating messages
+4. Deleting/Updating messages
 5. Should support group chat
 6. Chats should be persistent
+------------------------------------------------------------------------------
+# Technologies used:
+------------------------------------------------------------------------------
+1. Python
+2. Flask
+3. Kafka
+4. MongoDB
 ------------------------------------------------------------------------------
 # Overall Flow:
 ![Flow](images/Flow.png)
@@ -65,7 +72,7 @@ python action_server.py
 -------------------------------------------------------------------------------
 # How we will store the user information?
 ## User Record
-```
+```python
 { User Info Table}
 
 {
@@ -79,7 +86,7 @@ python action_server.py
 
 ## Users Data
 
-```
+```python
 {
     "user1" : {
 
@@ -136,7 +143,7 @@ python action_server.py
 ----------------------------------------------------------------------------
 # Database Connection (MongoDB)
 
-```
+```python
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 user_db = myclient["authentication"]
 user_table = user_db["user_info"]
@@ -148,13 +155,13 @@ user_table = user_db["user_info"]
 ## Query a record
 `query = user_table.find({'uid':req['uid']})`
 
-```
+```python
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["GlobalDB"]
 ```
 
 ## Update a record
-```
+```python
 mycol = mydb[collection_name]
 myquery = { "msg_id": msg_id }
 mydoc = mycol.find(myquery)
@@ -163,7 +170,7 @@ mycol.update_one(myquery, newvalues)
 ```
 
 ## Delete a record
-```
+```python
 mycol = mydb[collection_name]
 myquery = { "msg_id": msg_id }
 mydoc = mycol.find(myquery)
@@ -175,13 +182,15 @@ for x in mydoc:
 # Kafka 
 ## Producer Object in python:
 
-```
+```python
+from kafka import KafkaProducer
 producer = KafkaProducer(bootstrap_servers = 'localhost:9092')
 producer.send(topic, json.dumps(dict_msg).encode('utf-8'))
 ```
 
 ## Consumer Object in python:
-```
+```python
+from kafka import KafkaConsumer
 consumer = KafkaConsumer(user_id,
          bootstrap_servers=['localhost:9092'],
          auto_offset_reset='latest',
@@ -194,7 +203,7 @@ for msg in consumer:
 -------------------------------------------------------------------------------
 # JavaScript:
 
-```
+```JavaScript
 <script>
     chatWindow = document.getElementById('chat_window'); 
     var xH = chatWindow.scrollHeight; 
