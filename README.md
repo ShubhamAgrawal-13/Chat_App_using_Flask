@@ -69,18 +69,18 @@ python action_server.py
 -------------------------------------------------------------------------------
 # How we will store the user information?
 ## User Record
-```json
-// User Info Table
+```python
+# User Info Table
 {
-    "user_id": message['uid'],
-    "email": message['email'], 
-    "password": message['password']
+    "user_id": "user1",
+    "email": "user1@gmail.com", 
+    "password": "123"
 }
 ```
 
 ## Users Data
 
-```json
+```python
 {
     "user1" : {
 
